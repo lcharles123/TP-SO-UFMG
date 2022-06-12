@@ -1,0 +1,11 @@
+!.gitignore
+
+/docs/www/download/**
+/docs/www/favicon.ico
+/docs/www/images/**
+
+/src/source/**
+/src/work/**
+/src/minimal_linux_live*
+/src/*.img
+/src/*.tgz

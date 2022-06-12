@@ -21,4 +21,7 @@ else
   echo "No need to perform cleanup."
 fi
 
+mv minimal_linux_live.iso ../../minimal_linux_live.iso
+
+
 echo "*** CLEANUP END ***"

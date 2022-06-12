@@ -1,7 +1,9 @@
 minimal/src/source
 minimal/src/work
 minimal/src/minimal_*
+minimal/src/*.iso
+minimal/src/*.tgz
 
 linux-5.13.12.tar.xz
 minimal.zip
-
+minimal_linux_live.iso

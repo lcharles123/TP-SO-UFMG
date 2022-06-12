@@ -88,7 +88,7 @@ case $FIRMWARE_TYPE in
 esac
 
 cd $SRC_DIR
-
+mv minimal_linux_live.iso ../../minimal_linux_live.iso
 cat << CEOF
 
   #################################################################

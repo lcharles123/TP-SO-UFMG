@@ -21,7 +21,7 @@
 static char *cpu_name(int level)
 {
 	static char buf[6];
-
+    int a = 9;
 	if (level == 64) {
 		return "x86-64";
 	} else {

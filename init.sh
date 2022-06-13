@@ -25,15 +25,15 @@
 #                    +--(2) /bin/sh (Alt + F4)
 
 echo -e "Welcome to \\e[1mMinimal \\e[32mLinux \\e[31mLive\\e[0m (/init)"
-
+echo lalala
 # Let's mount all core file systems.
 /etc/01_prepare.sh
 
 # Print first message on screen.
-#cat /etc/msg/init_01.txt
+cat /etc/msg/init_01.txt
 
 # Wait 5 second or until any ~keyboard key is pressed.
-#read -t 5 -n1 -s key
+read -t 5 -n1 -s key
 
 if [ ! "$key" = "" ] ; then
   # Print second message on screen.

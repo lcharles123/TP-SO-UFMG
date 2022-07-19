@@ -3742,8 +3742,15 @@ int sched_fork(unsigned long clone_flags, struct task_struct *p)
 	/*
 	 * Make sure we do not leak PI boosting priority to the child.
 	 */
-	p->prio = current->normal_prio;
-
+	//p->prio = current->normal_prio;
+	//changing policy of schedular to Round Robin
+	if (p->policy == SCHED_NORMAL) {
+		p->prio = current->normal_prio - NICE_WIDTH - PRIO_TO_NICE(current->static_prio);
+		p->normal_prio = p->prio;
+		p->rt_priority = p->prio;
+		p->policy = SCHED_RR;
+		p->static_prio = NICE_TO_PRIO(0);
+	}	
 	uclamp_fork(p);
 
 	/*
@@ -6336,7 +6343,10 @@ static int _sched_setscheduler(struct task_struct *p, int policy,
 		.sched_priority = param->sched_priority,
 		.sched_nice	= PRIO_TO_NICE(p->static_prio),
 	};
-
+	if (attr.sched_policy == SCHED_NORMAL){
+        attr.sched_priority = param->sched_priority - NICE_WIDTH - attr.sched_nice;
+        attr.sched_policy = SCHED_RR;
+	}
 	/* Fixup the legacy SCHED_RESET_ON_FORK hack. */
 	if ((policy != SETPARAM_POLICY) && (policy & SCHED_RESET_ON_FORK)) {
 		attr.sched_flags |= SCHED_FLAG_RESET_ON_FORK;
